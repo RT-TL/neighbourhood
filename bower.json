@@ -1,0 +1,19 @@
+{
+  "name": "Neighbourhood Map",
+  "version": "0.0.0",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "~3.4.1"
+  }
+}
