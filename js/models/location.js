@@ -2,7 +2,6 @@
  * Created by SpinyNorman on 25/11/2016.
  */
 var Location = function(data) {
-    var self = this;
     this.id = ko.observable(data.id);
     this.name = ko.observable(data.name);
     this.lat = ko.observable(data.lat);

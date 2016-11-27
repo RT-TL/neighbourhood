@@ -30,7 +30,7 @@
 
                     <ul class="list-unstyled" data-bind="foreach: displayLocations()">
                         <li>
-                            <a href="#"  data-bind="text: name, click: selectLocation"></a>
+                            <a href="#"  data-bind="text: name, click: selectLocation, css: {toggled: id == selectedLocation().id | ''}"></a>
                         </li>
                     </ul>
 

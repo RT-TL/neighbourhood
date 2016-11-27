@@ -57,8 +57,9 @@ var MapView = function() {
                 var startsWith = locationFilter().toLowerCase();
 
                 string = string || "";
-                if (startsWith.length > string.length)
+                if (startsWith.length > string.length) {
                     return false;
+                }
                 return string.substring(0, startsWith.length) === startsWith;
             });
         }
@@ -75,16 +76,8 @@ var MapView = function() {
         //Change selected location to new location
         self.selectedLocation(newLocation);
 
-        //Modify view display
-
         //Trigger map change
 
     };
-
-
-    this.isSelected = ko.computed(function() {
-       console.log(this);
-
-    });
 
 };
