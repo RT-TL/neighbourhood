@@ -15,16 +15,29 @@
  * ThirdParty API allows to be called with additional info
  *
  **/
-import MapView from 'views/map-view';
-import LocationModel from 'models/location';
 
 var app = app || {};
 
 (function () {
-	'use strict';
+	'use strict'
 
     //Create the view class
-    app.Locations = new LocationModel();
-    app.mapView = new MapView();
+    app.Controller = LocationsController();
+    app.Mapview = MapView();
+    //render list
+    ko.applyBindings(app.Mapview);
+
+//    app.mapView = MapView();
+//    console.log(app);
 
 })();
+
+/**
+ Architecture 2:
+
+ 1. render interactive locations list
+ 2. add search field and observe it
+ 3. make location list depending on search field content
+ 4. hightlight list content
+ 5. synchronize list and map
+ **/

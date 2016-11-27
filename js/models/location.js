@@ -1,19 +1,11 @@
 /**
  * Created by SpinyNorman on 25/11/2016.
  */
-
-/*global Backbone */
-
-class LocationModel {
-	'use strict';
-
-	// Location Model
-	// ----------
-
-    constructor () {
-
-    };
-
+var Location = function(data) {
+    var self = this;
+    this.id = ko.observable(data.id);
+    this.name = ko.observable(data.name);
+    this.lat = ko.observable(data.lat);
+    this.long = ko.observable(data.long);
+    this.description = ko.observable(data.description);
 };
-
-export default LocationModel;
