@@ -22,13 +22,10 @@ var app = app || {};
 	'use strict'
 
     //Create the view class
-    app.Controller = LocationsController();
     app.Mapview = MapView();
+
     //render list
     ko.applyBindings(app.Mapview);
-
-//    app.mapView = MapView();
-//    console.log(app);
 
 })();
 

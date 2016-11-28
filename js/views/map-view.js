@@ -5,34 +5,6 @@
 // update lists based on search terms
 // implements event listener (input, select/toggle, infoWindow
 
-
-var initialLocations = [
-    {
-        id: 1,
-        name: "Roomtailors Headquarter",
-        lat: 11.111,
-        long: 11.111,
-        description: "Das Hauptquartier des besten Unternehmens der Welt."
-    },
-
-    {
-        id: 2,
-        name: "Roomtailors Feriensitz",
-        lat: 11.111,
-        long: 11.111,
-        description: "Das Naherholungsgebiet des besten Unternehmens der Welt"
-    },
-
-
-    {
-        id: 3,
-        name: "Finanzamt",
-        lat: 11.111,
-        long: 11.111,
-        description: "Das notwendige Übel"
-    },
-];
-
 var MapView = function() {
 //    'use strict'
 
@@ -66,7 +38,8 @@ var MapView = function() {
     });
 
     //Populate location list with model data
-    initialLocations.forEach(function (item) {
+    console.log(app.Controller.initialLocations);
+    app.Controller.getLocations().forEach(function (item) {
         self.locationList.push(new Location(item));
     });
 
