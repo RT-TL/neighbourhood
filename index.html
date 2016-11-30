@@ -30,7 +30,7 @@
 
                     <ul class="list-unstyled" data-bind="foreach: displayLocations()">
                         <li>
-                            <a href="#"  data-bind="text: name, click: selectLocation, css: {toggled: id == selectedLocation().id | ''}"></a>
+                            <a href="#"  data-bind="text: name, click: $parent.selectLocation, css: {toggled: id == selectedLocation().id | ''}"></a>
                         </li>
                     </ul>
 
@@ -40,9 +40,9 @@
 
             <!-- Map area -->
             <main id="mapbox">
-                <div id="map"></div>
+                <div id="mapfield"></div>
 
-                <script src="/js/init-maps.js" async defer></script>
+                <script src="/js/init-maps.js"></script>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBknwk2vEwCx_t_J4yRLjeRjoWo4M_iE5U&callback=initMap" async defer></script>
             </main>
 

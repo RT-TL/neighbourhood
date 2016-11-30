@@ -5,52 +5,57 @@
 // update lists based on search terms
 // implements event listener (input, select/toggle, infoWindow
 
-var MapView = function() {
-//    'use strict'
+(function () {
 
-    var self = this;
+    MapView = new function () {
+        'use strict'
 
-    //Initiative location list
-    self.locationList = ko.observableArray([]);
 
-    //Value of filter parameters
-    self.locationFilter = ko.observable();
+        var self = this;
 
-    //Index of currently selected location
-    self.selectedLocation = ko.observableArray([]);
+        //Initiative location list
+        self.locationList = ko.observableArray([]);
 
-    //List of filtered locations
-    self.displayLocations = ko.computed(function() {
-        if (!self.locationFilter()) {
-            return self.locationList();
-        } else {
-            return ko.utils.arrayFilter(self.locationList(), function(location) {
-                var string = location.name().toLowerCase();
-                var startsWith = locationFilter().toLowerCase();
+        //Value of filter parameters
+        self.locationFilter = ko.observable();
 
-                string = string || "";
-                if (startsWith.length > string.length) {
-                    return false;
-                }
-                return string.substring(0, startsWith.length) === startsWith;
-            });
-        }
-    });
+        //Index of currently selected location
+        self.selectedLocation = ko.observableArray([]);
 
-    //Populate location list with model data
-    console.log(app.Controller.initialLocations);
-    app.Controller.getLocations().forEach(function (item) {
-        self.locationList.push(new Location(item));
-    });
+        //List of filtered locations
+        self.displayLocations = ko.computed(function () {
+            if (!self.locationFilter()) {
+                return self.locationList();
+            } else {
+                return ko.utils.arrayFilter(self.locationList(), function (location) {
+                    var string = location.name().toLowerCase();
+                    var startsWith = locationFilter().toLowerCase();
 
-    //Change value of currently selected location
-    this.selectLocation = function(newLocation) {
+                    string = string || "";
+                    if (startsWith.length > string.length) {
+                        return false;
+                    }
+                    return string.substring(0, startsWith.length) === startsWith;
+                });
+            }
+        });
 
-        //Change selected location to new location
-        self.selectedLocation(newLocation);
+        //Populate location list with model data
+        app.Controller.getLocations().forEach(function (item) {
+            self.locationList.push(new Location(item));
+        });
 
-        //Trigger map change
+
+        //Change value of currently selected location
+        self.selectLocation = function (newLocation) {
+
+            //Change selected location to new location
+            self.selectedLocation(newLocation);
+
+            //Trigger map change
+
+        };
+
 
     };
-
-};
+})();
