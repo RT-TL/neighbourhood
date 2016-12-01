@@ -12,9 +12,7 @@ window.initMap = function() {
         return alert("Sorry guys, Google is not working today");
     }
 
-    console.log(map);
-
     //render list
-    ko.applyBindings(app.Mapview);
+    ko.applyBindings(app.MapView);
 
 };

@@ -10,7 +10,7 @@ var app = app || {};
 
 (function () {
     MapView = new function () {
-        'use strict'
+       // 'use strict'
 
         var self = this;
 
@@ -59,7 +59,7 @@ var app = app || {};
 
 
         //Map marker
-        /*
+
         self.mapMarker = ko.computed(function() {
             if (!self.displayLocations()) {
                 return "";
@@ -72,7 +72,7 @@ var app = app || {};
                       });
                 });
             }
-        });*/
+        });
 
 
     };

@@ -27,9 +27,9 @@
                         <input type="text" name="search" data-bind="value:locationFilter, valueUpdate: 'afterkeydown'" class="form-inline form-control-lg" placeholder="Search for....">
                     </form>
 
-                    <ul data-bind="foreach: displayLocation()" class="list-unstyled">
+                    <ul data-bind="foreach: displayLocations" class="list-unstyled">
                         <li >
-                            <a href="#"  data-bind="text: name, click: $parent.selectLocation, css: {toggled: id == $parent.selectedLocation().id | ''}"></a>
+                            <a href="#"  data-bind="text: name"></a><!-- , click: $parent.selectLocation, css: {toggled: id == $parent.selectedLocation().id | ''} -->
                         </li>
                     </ul>
                 </div>
