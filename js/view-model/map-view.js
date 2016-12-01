@@ -57,26 +57,26 @@ var app = app || {};
 
         };
 
-        console.log(app.map);
-
-
         //Map marker
         self.mapMarker = ko.computed(function() {
             if (!self.displayLocations() || !app.map) {
                 return "";
-            } else {/*
+            } else {
+                console.log(self.displayLocations());
+                setMapOnAll(null);
                 _.forEach(self.displayLocations(), function(location){
                     new app.google.maps.Marker({
                         position: {lat: location.lat(), lng: location.long()},
                         map: app.map,
                         title: location.name()
                       });
-                });*/
+                });
             }
         });
 
 
     };
 
-    //Assign map view as view model
+    app.MapView = MapView;
+
 })();
