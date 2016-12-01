@@ -10,7 +10,6 @@
     MapView = new function () {
         'use strict'
 
-
         var self = this;
 
         //Initiative location list
@@ -21,6 +20,12 @@
 
         //Index of currently selected location
         self.selectedLocation = ko.observableArray([]);
+
+        //Populate location list with model data
+        app.Controller.getLocations().forEach(function (item) {
+            self.locationList.push(new Location(item));
+        });
+
 
         //List of filtered locations
         self.displayLocations = ko.computed(function () {
@@ -38,11 +43,6 @@
                     return string.substring(0, startsWith.length) === startsWith;
                 });
             }
-        });
-
-        //Populate location list with model data
-        app.Controller.getLocations().forEach(function (item) {
-            self.locationList.push(new Location(item));
         });
 
 
