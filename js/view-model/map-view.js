@@ -57,7 +57,9 @@ var app = app || {};
 
         };
 
+
         //Map marker
+        /*
         self.mapMarker = ko.computed(function() {
             if (!self.displayLocations()) {
                 return "";
@@ -70,7 +72,7 @@ var app = app || {};
                       });
                 });
             }
-        });
+        });*/
 
 
     };

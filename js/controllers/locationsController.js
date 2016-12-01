@@ -7,14 +7,8 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	// Todo Collection
-	// ---------------
-
-	// The collection of todos is backed by *localStorage* instead of a remote
-	// server.
 	var Controller = function(){
 
-		// Reference to this collection's model.
 		this.initialLocations = [
                 {
                     id: 1,
@@ -42,7 +36,6 @@ var app = app || {};
                 },
             ];
 
-		// Filter down the list of all todo items that are finished.
 		this.getLocations = function () {
 			return this.initialLocations;
 		}

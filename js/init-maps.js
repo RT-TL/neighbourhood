@@ -6,4 +6,15 @@ window.initMap = function() {
       scrollwheel: false,
       zoom: 15
     });
+
+    if (typeof map === 'undefined') {
+    // the variable is defined
+        return alert("Sorry guys, Google is not working today");
+    }
+
+    console.log(map);
+
+    //render list
+    ko.applyBindings(app.Mapview);
+
 };

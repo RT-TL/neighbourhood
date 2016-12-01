@@ -21,14 +21,6 @@ var app = app || {};
 (function () {
 	'use strict'
 
-    if (typeof map === 'undefined') {
-    // the variable is defined
-        return alert("Sorry guys, Google is not working today");
-    }
-
-
-    //render list
-    ko.applyBindings(app.Mapview);
 
 })();
 
