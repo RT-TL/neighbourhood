@@ -19,25 +19,25 @@ var app = app || {};
                 {
                     id: 1,
                     name: "Roomtailors Headquarter",
-                    lat: 11.111,
-                    long: 11.111,
+                    lat: 48.739626,
+                    long: 9.098718,
                     description: "Das Hauptquartier des besten Unternehmens der Welt."
                 },
 
                 {
                     id: 2,
-                    name: "Roomtailors Feriensitz",
-                    lat: 11.111,
-                    long: 11.111,
+                    name: "Fraunhofer institute",
+                    lat: 48.740147,
+                    long: 9.096008,
                     description: "Das Naherholungsgebiet des besten Unternehmens der Welt"
                 },
 
 
                 {
                     id: 3,
-                    name: "Finanzamt",
-                    lat: 11.111,
-                    long: 11.111,
+                    name: "High School Lib",
+                    lat: 48.741140,
+                    long: 9.102013,
                     description: "Das notwendige Übel"
                 },
             ];

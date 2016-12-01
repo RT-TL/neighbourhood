@@ -20,12 +20,11 @@
   </head>
   <body>
         <div id="wrapper">
-
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
                 <div class="sidebar-nav">
                     <form action="">
-                        <input type="text" name="search" data-bind="value: locationFilter, valueUpdate: 'afterkeydown'" class="form-inline form-control-lg" placeholder="Search for....">
+                        <input type="text" name="search" data-bind="value:locationFilter, valueUpdate: 'afterkeydown'" class="form-inline form-control-lg" placeholder="Search for....">
                     </form>
 
                     <ul data-bind="foreach: displayLocations()" class="list-unstyled">
@@ -41,13 +40,14 @@
             <main id="mapbox">
                 <div id="mapfield"></div>
 
-                <script src="/js/init-maps.js"></script>
+                <script src="js/init-maps.js"></script>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBknwk2vEwCx_t_J4yRLjeRjoWo4M_iE5U&callback=initMap" async defer></script>
             </main>
 
         </div>
 
     <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
 
     <script src="js/models/location.js"></script>
     <script src="js/controllers/locationsController.js"></script>
