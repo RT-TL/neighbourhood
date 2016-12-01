@@ -10,7 +10,7 @@ var app = app || {};
 
 (function () {
     MapView = new function () {
-       // 'use strict'
+        'use strict'
 
         var self = this;
 
@@ -57,20 +57,21 @@ var app = app || {};
 
         };
 
+        console.log(app.map);
+
 
         //Map marker
-
         self.mapMarker = ko.computed(function() {
-            if (!self.displayLocations()) {
+            if (!self.displayLocations() || !app.map) {
                 return "";
-            } else {
+            } else {/*
                 _.forEach(self.displayLocations(), function(location){
-                    new google.maps.Marker({
+                    new app.google.maps.Marker({
                         position: {lat: location.lat(), lng: location.long()},
-                        map: map,
+                        map: app.map,
                         title: location.name()
                       });
-                });
+                });*/
             }
         });
 
@@ -78,5 +79,4 @@ var app = app || {};
     };
 
     //Assign map view as view model
-    app.MapView = MapView;
 })();
