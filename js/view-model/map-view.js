@@ -7,6 +7,34 @@
 
 var app = app || {};
 
+//Provide initial location data
+app.initialLocations = function() {
+    this.data = [
+        {
+            "id": 1,
+            "name": "Roomtailors Headquarter",
+            "lat": 48.739626,
+            "long": 9.098718,
+            "description": "Das Hauptquartier des besten Unternehmens der Welt."
+        },
+        {
+            "id": 2,
+            "name": "Fraunhofer institute",
+            "lat": 48.740147,
+            "long": 9.096008,
+            "description": "Das Naherholungsgebiet des besten Unternehmens der Welt"
+        },
+        {
+            "id": 3,
+            "name": "High School Lib",
+            "lat": 48.741140,
+            "long": 9.102013,
+            "description": "Good place for a nap"
+        }
+    ];
+
+    return this.data;
+};
 
 (function () {
     MapView = new function () {
@@ -24,9 +52,13 @@ var app = app || {};
         self.selectedLocation = ko.observableArray([]);
 
         //Populate location list with model data
-        app.Controller.getLocations().forEach(function (item) {
+        app.initialLocations().forEach(function (item) {
             self.locationList.push(new Location(item));
         });
+
+        //Observe list of markers
+        self.markers = ko.observableArray([]);
+
 
         //List of filtered locations
         self.displayLocations = ko.computed(function () {
@@ -35,26 +67,20 @@ var app = app || {};
             } else {
                 return ko.utils.arrayFilter(self.locationList(), function (location) {
                     var string = location.name().toLowerCase();
-                    var startsWith = self.locationFilter().toLowerCase();
+                    var searchString = self.locationFilter().toLowerCase();
 
-                    string = string || "";
-                    if (startsWith.length > string.length) {
-                        return false;
-                    }
-                    return string.substring(0, startsWith.length) === startsWith;
+                    var match = string.indexOf(searchString);
+
+                    //Return true if search has found the string
+                    return match === -1 ? false : true;
                 });
             }
         });
 
         //Change value of currently selected location
         self.selectLocation = function (newLocation) {
-            console.log(self.locationFilter());
-
             //Change selected location to new location
             self.selectedLocation(newLocation);
-
-            //Trigger map change
-
         };
 
         //Map marker
@@ -69,13 +95,6 @@ var app = app || {};
                 _.forEach(self.displayLocations(), function(location){
                     app.Markers.addMarker({lat: location.lat(), lng: location.long()});
 
-                /*
-
-                    new app.google.maps.Marker({
-                        position: {lat: location.lat(), lng: location.long()},
-                        map: app.map,
-                        title: location.name()
-                      });*/
                 });
             }
         });

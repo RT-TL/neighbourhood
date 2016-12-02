@@ -24,7 +24,7 @@
             <div id="sidebar-wrapper">
                 <div class="sidebar-nav">
                     <form action="">
-                        <input type="text" name="search" data-bind="value:locationFilter, valueUpdate: 'afterkeydown'" class="form-inline form-control-lg" placeholder="Search for....">
+                        <input type="text" name="search" data-bind="textInput: locationFilter" class="form-inline form-control-lg" placeholder="Search for....">
                     </form>
 
                     <ul data-bind="foreach: displayLocations" class="list-unstyled">
@@ -45,7 +45,6 @@
 
                 <script src="js/models/mapmarker.js"></script>
                 <script src="js/models/location.js"></script>
-                <script src="js/controllers/locationsController.js"></script>
                 <script src="js/view-model/map-view.js"></script>
 
                 <script src="js/init-maps.js"></script>

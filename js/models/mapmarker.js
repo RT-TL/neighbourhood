@@ -12,7 +12,9 @@ var app = app || {};
         self.addMarker = function (location) {
             var marker = new google.maps.Marker({
                 position: location,
-                map: app.map
+                map: app.map,
+                animation: google.maps.Animation.DROP
+
             });
             self.list.push(marker);
         }
