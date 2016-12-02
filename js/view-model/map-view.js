@@ -62,14 +62,20 @@ var app = app || {};
             if (!self.displayLocations() || !app.map) {
                 return "";
             } else {
-                console.log(self.displayLocations());
-                setMapOnAll(null);
+                //Remove current markers from map
+                app.Markers.clearMarkers();
+
+                //Add new markers
                 _.forEach(self.displayLocations(), function(location){
+                    app.Markers.addMarker({lat: location.lat(), lng: location.long()});
+
+                /*
+
                     new app.google.maps.Marker({
                         position: {lat: location.lat(), lng: location.long()},
                         map: app.map,
                         title: location.name()
-                      });
+                      });*/
                 });
             }
         });
