@@ -9,12 +9,13 @@ var app = app || {};
 
         self.list = [];
 
+
+        /*
         self.addMarker = function (location) {
             var marker = new google.maps.Marker({
                 position: location,
                 map: app.map,
                 animation: google.maps.Animation.DROP
-
             });
             self.list.push(marker);
         }
@@ -40,7 +41,7 @@ var app = app || {};
         self.deleteMarkers = function () {
             self.clearMarkers();
             self.list = [];
-        }
+        }*/
     };
 
     app.Markers = new Markers();

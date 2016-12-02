@@ -1,12 +1,21 @@
 /**
- * Created by SpinyNorman on 25/11/2016.
+ *
+ * @param location: object contaning lat,lng,title,visibility
+ * @returns {google.maps.Marker}
+ * @constructor
  */
-var Marker = function (location) {
-    var newMarker = new google.maps.Marker({
-        position: {location.lat, location.long},
+console.log(app);
+
+app.Marker = function(location) {
+    'use strict'
+
+    var marker = new google.maps.Marker({
+        position: {lat: location.lat, lng: location.long},
         map: app.map,
-        visible: location.visible
+        animation: google.maps.Animation.DROP
     });
 
-    return newMarker;
+    marker.setVisible(false);
+
+    return marker;
 };

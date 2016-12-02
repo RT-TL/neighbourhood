@@ -7,36 +7,7 @@
 
 var app = app || {};
 
-//Provide initial location data
-app.initialLocations = function() {
-    this.data = [
-        {
-            "id": 1,
-            "name": "Roomtailors Headquarter",
-            "lat": 48.739626,
-            "long": 9.098718,
-            "description": "Das Hauptquartier des besten Unternehmens der Welt."
-        },
-        {
-            "id": 2,
-            "name": "Fraunhofer institute",
-            "lat": 48.740147,
-            "long": 9.096008,
-            "description": "Das Naherholungsgebiet des besten Unternehmens der Welt"
-        },
-        {
-            "id": 3,
-            "name": "High School Lib",
-            "lat": 48.741140,
-            "long": 9.102013,
-            "description": "Good place for a nap"
-        }
-    ];
-
-    return this.data;
-};
-
-(function () {
+//(function () {
     MapView = new function () {
         'use strict'
 
@@ -56,23 +27,41 @@ app.initialLocations = function() {
             self.locationList.push(new Location(item));
         });
 
-        //Observe list of markers
-        self.markers = ko.observableArray([]);
+        this.markers = ko.observableArray([]);
+
 
 
         //List of filtered locations
         self.displayLocations = ko.computed(function () {
             if (!self.locationFilter()) {
+
+                //Show all markers
+                app.markerList.map(function(marker){marker.setVisible(true)})
+
+                //Return filtered list
                 return self.locationList();
+
             } else {
+
+                //Return filtered array
                 return ko.utils.arrayFilter(self.locationList(), function (location) {
+
+                    //Prepare comparison strings
                     var string = location.name().toLowerCase();
                     var searchString = self.locationFilter().toLowerCase();
 
-                    var match = string.indexOf(searchString);
+                    //Match strings
+                    var match = string.indexOf(searchString) === -1 ? false : true;
+
+                    //Show/hide marker on map
+                    if (match) {
+                        app.markerList[location.id()].setVisible(true);
+                    } else {
+                        app.markerList[location.id()].setVisible(false);
+                    }
 
                     //Return true if search has found the string
-                    return match === -1 ? false : true;
+                    return match;
                 });
             }
         });
@@ -89,11 +78,10 @@ app.initialLocations = function() {
                 return "";
             } else {
                 //Remove current markers from map
-                app.Markers.clearMarkers();
 
                 //Add new markers
                 _.forEach(self.displayLocations(), function(location){
-                    app.Markers.addMarker({lat: location.lat(), lng: location.long()});
+                    //app.Markers.addMarker({lat: location.lat(), lng: location.long()});
 
                 });
             }
@@ -104,4 +92,4 @@ app.initialLocations = function() {
 
     app.MapView = MapView;
 
-})();
+//});
