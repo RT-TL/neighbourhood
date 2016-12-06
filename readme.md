@@ -17,14 +17,12 @@ Clone repository:
 git clone https://github.com/Roomtailors/neighbourhood.git
 ```
 
-To begin you need to install all required modules by running 'bower i# Udacity Neighbourhood Map Project
-
-This project contains an interactive map and a list view. The project is built on JavaScript/HTML/CSS using Twitter Bootstrap, Knockout.js, lodash and axios. Dependencies are managed with Bower.
+Open `index.html` from root folder. 
 
 ## Requirements
 
 1. Clone git repository
-2. (Install dependencies by 'bower install') currently included
+2. (Install dependencies by `bower install`) currently included
 3. Open 'index.html' from root directory
 
 ## Project Structure
