@@ -26,7 +26,26 @@ app.initialLocations = function() {
             "lat": 48.741140,
             "long": 9.102013,
             "description": "Good place for a nap"
+        },
+
+        {
+            "id": 4,
+            "name": "Commundo Tagungshotel",
+            "lat": 48.746076,
+            "long": 9.107849,
+            "description": "Tagungshotel"
+        },
+
+        {
+            "id": 5,
+            "name": "Filderstadt",
+            "lat": 48.692426,
+            "long": 9.226620,
+            "description": "Flughafen"
         }
+
+
+
     ];
 
     return this.data;

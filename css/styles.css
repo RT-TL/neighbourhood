@@ -40,3 +40,7 @@
   position: absolute;
   right: 5px;
 }
+
+.top-buffer {
+  margin-top: 20px;
+}
