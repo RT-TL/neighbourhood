@@ -8,7 +8,7 @@ initMap = function() {
    app.map = new google.maps.Map(document.getElementById('mapfield'), {
       center: {lat: 48.739737, lng: 9.098477},
       scrollwheel: false,
-      zoom: 15
+      zoom: 11
     });
 
     app.informationWindow = new google.maps.InfoWindow({

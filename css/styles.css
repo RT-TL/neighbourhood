@@ -29,12 +29,10 @@
   height: 100%;
 }
 
-.toggled, .toggled:active, .toggled:focus {
-  background-color: #770021 !important;
-}
 
 .toggled:after {
-  content: " selected!";
+  content: "\f1a9";
+  font-family: "FontAwesome";
   font-size: 8px;
   vertical-align: middle;
   position: absolute;
