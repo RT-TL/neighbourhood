@@ -27,10 +27,6 @@ var app = app || {};
             self.locationList.push(new Location(item));
         });
 
-        this.markers = ko.observableArray([]);
-
-
-
         //List of filtered locations
         self.displayLocations = ko.computed(function () {
             if (!self.locationFilter()) {
@@ -72,20 +68,7 @@ var app = app || {};
             self.selectedLocation(newLocation);
         };
 
-        //Map marker
-        self.mapMarker = ko.computed(function() {
-            if (!self.displayLocations() || !app.map) {
-                return "";
-            } else {
-                //Remove current markers from map
 
-                //Add new markers
-                _.forEach(self.displayLocations(), function(location){
-                    //app.Markers.addMarker({lat: location.lat(), lng: location.long()});
-
-                });
-            }
-        });
 
 
     };
