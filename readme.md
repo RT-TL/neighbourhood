@@ -30,12 +30,19 @@ This project contains an interactive map and a list view. The project is built o
 ## Project Structure
 
 /bower_components/
+
 /css/
+
 /fonts/
+
 /js/models/
+
 /js/view-model/
+
 /js/views/
+
 /js/data.js
+
 /init-maps.js
 
 The logic is centered around the init-maps.js file. To look at the code you should start form there.
