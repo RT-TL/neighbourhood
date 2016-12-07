@@ -65,7 +65,8 @@ var app = app || {};
         //Change value of currently selected location
         self.selectLocation = function (newLocation) {
             //Change selected location to new location
-            self.selectedLocation(newLocation);
+            var marker = app.markerList[newLocation.id()]
+            markerClicked(marker)
         };
 
 

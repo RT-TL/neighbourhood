@@ -30,7 +30,7 @@
 
                     <ul data-bind="foreach: displayLocations" class="list-unstyled">
                         <li >
-                            <a href="#"  data-bind="text: name"></a>
+                            <a href="#"  data-bind="text: name, click: $parent.selectLocation"></a>
                         </li>
                     </ul>
                 </div>

@@ -17,7 +17,7 @@ Clone repository:
 git clone https://github.com/Roomtailors/neighbourhood.git
 ```
 
-Open `index.html` from root folder. 
+Open `index.html` from root folder.
 
 ## Requirements
 

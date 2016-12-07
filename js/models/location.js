@@ -7,4 +7,6 @@ var Location = function(data) {
     this.lat = ko.observable(data.lat);
     this.long = ko.observable(data.long);
     this.description = ko.observable(data.description);
+
+    this.marker = ko.observableArray(app.markerList[data.id]);
 };

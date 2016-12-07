@@ -32,12 +32,16 @@ initMap = function() {
 
         //Attach click listener to marker
         app.markerList[location.id].addListener('click', function() {
-            bounce(this);
-            showInfoWindow(this, app.informationWindow);
+            markerClicked(this)
         });
     });
 
 };
+
+markerClicked = function markerClicked(marker) {
+    bounce(marker);
+    showInfoWindow(marker, app.informationWindow);
+}
 
 /**
  * showInfoWindow
