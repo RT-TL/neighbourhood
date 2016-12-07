@@ -11,13 +11,20 @@ initMap = function() {
       zoom: 11
     });
 
+
     app.informationWindow = new google.maps.InfoWindow({
         content: '',
         maxWidth: 200
     });
 
-    //var informationWindow = new google.maps.InfoWindow();
+    app.mapView = new MapView()
+    app.MarkerView = new MarkerView()
 
+
+    ko.applyBindings(app);
+
+    //var informationWindow = new google.maps.InfoWindow();
+/**
     //Populate map with initial locations
     _.forEach(app.initialLocations(), function(location) {
         app.markerList[location.id] = new google.maps.Marker({
@@ -35,14 +42,14 @@ initMap = function() {
             markerClicked(this)
         });
     });
-
+**/
 };
-
+/**
 markerClicked = function markerClicked(marker) {
     bounce(marker);
     showInfoWindow(marker, app.informationWindow);
 }
-
+**/
 /**
  * showInfoWindow
  * displays text information window upon map marker click
@@ -50,6 +57,7 @@ markerClicked = function markerClicked(marker) {
  * @param marker: object google map marker
  * @param infowindow
  */
+/**
 showInfoWindow = function showInfoWindow(marker,infowindow) {
     if(infowindow.marker != marker) {
         self = this;
@@ -97,5 +105,4 @@ function bounce(marker) {
         marker.setAnimation(null);
     },1400);
 }
-
-ko.applyBindings(app.MapView);
+**/

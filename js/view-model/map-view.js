@@ -8,10 +8,8 @@
 var app = app || {};
 
 //(function () {
-    MapView = new function () {
+    MapView = function () {
         'use strict'
-
-        var self = this;
 
         //Initiative location list
         self.locationList = ko.observableArray([]);
@@ -51,9 +49,9 @@ var app = app || {};
 
                     //Show/hide marker on map
                     if (match) {
-                        app.markerList[location.id()].setVisible(true);
+                        app.MarkerView.markerList[location.id()].setVisible(true);
                     } else {
-                        app.markerList[location.id()].setVisible(false);
+                        app.MarkerView.markerList[location.id()].setVisible(false);
                     }
 
                     //Return true if search has found the string
@@ -65,8 +63,8 @@ var app = app || {};
         //Change value of currently selected location
         self.selectLocation = function (newLocation) {
             //Change selected location to new location
-            var marker = app.markerList[newLocation.id()]
-            markerClicked(marker)
+            var marker = app.MarkerView.markerList[newLocation.id()]
+            app.MarkerView.markerClicked(marker)
         };
 
 
@@ -74,6 +72,6 @@ var app = app || {};
 
     };
 
-    app.MapView = MapView;
+    app.MapView = new MapView();
 
 //});
