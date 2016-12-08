@@ -40,7 +40,6 @@ MarkerView = function () {
         if(infowindow.marker != marker) {
             self = this;
             infowindow.marker = marker;
-            this.content = "";
 
             axios.get('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=cdb1ca90da28f6167ecd4dd609fcebab&accuracy=16&lat=' + marker.location.lat + '&lon=' + marker.location.long + '&per_page=2&format=json&nojsoncallback=1')
               .then(function (response) {
@@ -48,6 +47,7 @@ MarkerView = function () {
 
                     //Handle empty results/errors
                     if (typeof self.apiResponse !== "undefined") {
+                        this.content = "";
 
                         //Create content string from callback result
                         self.apiResponse.forEach( function(value){
