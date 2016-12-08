@@ -5,6 +5,29 @@ var app = app || {};
 
 //Provide initial location data
 app.initialLocations = function() {
+    this.data = []
+
+    this.loadJSON = function (path)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function()
+        {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log(JSON.parse(xhr.responseText))
+                    return JSON.parse(xhr.responseText);
+                } else {
+                    return {};
+                }
+            }
+        };
+        xhr.open("GET", path, true);
+        xhr.send();
+    }
+
+    this.data = this.loadJSON('locations.json');
+    console.log(this.data);
+/*
     this.data = [
         {
             "id": 1,
@@ -42,13 +65,17 @@ app.initialLocations = function() {
             "lat": 48.692426,
             "long": 9.226620,
             "description": "Flughafen"
+        },
+        {
+            "id": 6,
+            "name": "Esslingen",
+            "lat": 48.738101,
+            "long": 9.315130,
+            "description": "Best place to go for Weihnachtsmarkt."
         }
 
-
-
-    ];
-
+    ];*/
     return this.data;
 };
-
+app.initialLocations();
 app.markerList = [];

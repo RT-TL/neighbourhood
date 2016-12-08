@@ -67,9 +67,6 @@ var app = app || {};
             app.MarkerView.markerClicked(marker)
         };
 
-
-
-
     };
 
     app.MapView = new MapView();

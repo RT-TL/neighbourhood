@@ -42,3 +42,7 @@
 .top-buffer {
   margin-top: 20px;
 }
+
+.form-inline{
+  max-width: 100%;
+}

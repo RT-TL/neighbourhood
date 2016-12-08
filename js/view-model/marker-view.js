@@ -8,12 +8,7 @@ MarkerView = function () {
 
     //Populate map with initial locations
     _.forEach(app.initialLocations(), function(location) {
-        self.markerList[location.id] = new google.maps.Marker({
-            position: {lat: location.lat, lng: location.long},
-            map: app.map,
-            animation: google.maps.Animation.DROP,
-            visible: true,
-        });
+        self.markerList[location.id] = new app.Marker(location);
 
         //Attach marker information to map marker
         self.markerList[location.id].location = location;
@@ -24,6 +19,10 @@ MarkerView = function () {
         });
     });
 
+    /**
+     *
+     * @param marker
+     */
     self.markerClicked = function(marker) {
         self.bounce(marker);
         self.showInfoWindow(marker, app.informationWindow);
