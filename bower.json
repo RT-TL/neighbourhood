@@ -9,9 +9,13 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
+    "bower_components"
   ],
   "dependencies": {
-    "knockout": "~3.4.1"
+    "knockout": "~3.4.1",
+    "axios": "^0.15.3"
+  },
+  "resolutions": {
+    "bootstrap": "v4.0.0-alpha.5"
   }
 }
