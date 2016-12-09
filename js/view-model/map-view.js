@@ -7,68 +7,69 @@
 
 var app = app || {};
 
-//(function () {
-    MapView = function () {
-        'use strict'
+MapView = function () {
+    'use strict'
 
-        //Initiative location list
-        self.locationList = ko.observableArray([]);
+    //Initiative location list
+    self.locationList = ko.observableArray(app.data);
 
-        //Value of filter parameters
-        self.locationFilter = ko.observable();
+    //Create a map marker for each location
+    self.locationList().map(function(location) {
+        location.marker = new app.Marker(location)
+    })
 
-        //Index of currently selected location
-        self.selectedLocation = ko.observableArray([]);
+    //Value of filter parameters
+    self.locationFilter = ko.observable();
 
-        //Populate location list with model data
-        app.initialLocations().forEach(function (item) {
-            self.locationList.push(new Location(item));
-        });
+    //Index of currently selected location
+    self.selectedLocation = ko.observableArray([]);
 
-        //List of filtered locations
-        self.displayLocations = ko.computed(function () {
-            if (!self.locationFilter()) {
+    //List of filtered locations
+    self.displayLocations = ko.computed(function () {
 
-                //Show all markers
-                app.markerList.map(function(marker){marker.setVisible(true)})
+        //No filter set
+        if (!self.locationFilter()) {
 
-                //Return filtered list
-                return self.locationList();
+            //Show all markers
+            self.locationList().map(function(location) {
+                location.marker.setVisible(true)
+            })
 
-            } else {
+            //Return filtered list
+            return self.locationList();
 
-                //Return filtered array
-                return ko.utils.arrayFilter(self.locationList(), function (location) {
+        //Filter set
+        } else {
 
-                    //Prepare comparison strings
-                    var string = location.name().toLowerCase();
-                    var searchString = self.locationFilter().toLowerCase();
+            //Return filtered array
+            return ko.utils.arrayFilter(self.locationList(), function (location) {
 
-                    //Match strings
-                    var match = string.indexOf(searchString) === -1 ? false : true;
+                //Prepare comparison strings
+                var string = location.name.toLowerCase();
+                var searchString = self.locationFilter().toLowerCase();
 
-                    //Show/hide marker on map
-                    if (match) {
-                        app.MarkerView.markerList[location.id()].setVisible(true);
-                    } else {
-                        app.MarkerView.markerList[location.id()].setVisible(false);
-                    }
+                //Match strings
+                var match = string.indexOf(searchString) === -1 ? false : true;
 
-                    //Return true if search has found the string
-                    return match;
-                });
-            }
-        });
+                //Show/hide marker on map
+                if (match) {
+                    location.marker.setVisible(true);
+                } else {
+                    location.marker.setVisible(false);
+                }
 
-        //Change value of currently selected location
-        self.selectLocation = function (newLocation) {
-            //Change selected location to new location
-            var marker = app.MarkerView.markerList[newLocation.id()]
-            app.MarkerView.markerClicked(marker)
-        };
+                //Return true if search has found the string
+                return match;
+            });
+        }
+    });
 
+    //Change value of currently selected location
+    self.selectLocation = function (newLocation) {
+        //Change selected location to new location
+        newLocation.marker.markerClicked()
     };
 
-    app.MapView = new MapView();
+};
 
-//});
+app.MapView = new MapView();
