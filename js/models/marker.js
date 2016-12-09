@@ -33,14 +33,14 @@ app.Marker = function(location) {
     })
 
     marker.addListener('click', function() {
-        self.markerClicked()
+        marker.markerClicked()
     });
 
 
     /** markerClicked
      * separate function to address on click events, also triggered from view-model
      */
-    self.markerClicked = function() {
+    marker.markerClicked = function() {
         self.bounce();
         self.showInfoWindow(app.informationWindow);
     }

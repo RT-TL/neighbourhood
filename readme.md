@@ -1,12 +1,12 @@
 # Udacity Neighbourhood Map Project
 
-This project contains an interactive map and a list view. The project is built on JavaScript/HTML/CSS using Twitter Bootstrap, Knockout.js, lodash and axios. Dependencies are managed with Bower.
+This project contains an interactive map and a list view. The project is built on JavaScript/HTML/CSS using Twitter Bootstrap, Knockout.js, and axios. Dependencies are managed with Bower.
 
 ## Table of contents
 
 * [Quick start](#quick-start)
 * [Requirements](#requirements)
-* [Project Structure](#project-structure)
+* [Structure & Instructions](#Structure-&-Instructions)
 * [License](#license)
 
 
@@ -15,35 +15,24 @@ This project contains an interactive map and a list view. The project is built o
 Clone repository:
 ```
 git clone https://github.com/Roomtailors/neighbourhood.git
+bower install
+python -m SimpleHTTPServer 8080
 ```
 
-Open `index.html` from root folder.
+Open 0.0.0.0:8080 in your browser (or 127.0.0.1).
 
 ## Requirements
 
-1. Clone git repository
-2. (Install dependencies by `bower install`) currently included
-3. Open 'index.html' from root directory
+1. GIT: https://www.git-scm.com
+2. Bower: https://www.bower.io
+3. Python or any other local HTTP server
 
-## Project Structure
+## Structure & Instructions
 
-/bower_components/
+The project is organized in an MVVM architecture. Models are in js/models, view-models in /js/view-model and views in js/views.
+The app is centered around /js/init-maps.js. Start from here.
 
-/css/
-
-/fonts/
-
-/js/models/
-
-/js/view-model/
-
-/js/views/
-
-/js/data.js
-
-/init-maps.js
-
-The logic is centered around the init-maps.js file. To look at the code you should start form there.
+Data is stored in JSON-Format in locations.json in project root. You can add/change/delete locations in this file. Notice that running the app directly through index.html is not possible because of the restrictions of the file:// protocol.
 
 ## License
 

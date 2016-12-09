@@ -18,6 +18,8 @@ MapView = function () {
         location.marker = new app.Marker(location)
     })
 
+    self.locationList.sort(self.sortByName);
+
     //Value of filter parameters
     self.locationFilter = ko.observable();
 
@@ -69,6 +71,16 @@ MapView = function () {
         //Change selected location to new location
         newLocation.marker.markerClicked()
     };
+
+    self.sortByName = function (a,b){
+      if(a.name<b.name){ // if price is observable
+        return -1;
+      } else if(a.name > b.name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
 
 };
 
