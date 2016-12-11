@@ -5,10 +5,10 @@
  * @constructor
  */
 var Location = function(data) {
-    this.id = data.id
-    this.name = data.name
-    this.lat = data.lat
-    this.long = data.long
-    this.description = data.description
-    this.marker = new app.Marker(data)
+    this.id = data.id;
+    this.name = data.name;
+    this.lat = data.lat;
+    this.long = data.long;
+    this.description = data.description;
+    this.marker = new app.Marker(data);
 };

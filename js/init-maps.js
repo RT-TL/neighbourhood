@@ -19,7 +19,7 @@ initMap = function() {
     });
 
     //Create view model
-    app.mapView = new MapView()
+    app.mapView = new MapView();
 
     ko.applyBindings(app);
-}
+};

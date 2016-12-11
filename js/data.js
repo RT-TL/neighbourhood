@@ -4,7 +4,7 @@ var app = app || {};
  * populates data array based on JSON-stored location file
  */
 app.initialLocations = function() {
-    this.data = []
+    this.data = [];
     this.loadJSON = function (path)
     {
         var xhr = new XMLHttpRequest();
@@ -22,7 +22,7 @@ app.initialLocations = function() {
         };
         xhr.open("GET", path, true);
         xhr.send();
-    }
+    };
 
     this.loadJSON('locations.json')
 

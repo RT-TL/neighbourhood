@@ -1,14 +1,7 @@
-/**
- * Created by SpinyNorman on 25/11/2016.
- */
-// allows rendering of the list
-// update lists based on search terms
-// implements event listener (input, select/toggle, infoWindow
-
 var app = app || {};
 
 MapView = function () {
-    'use strict'
+    'use strict';
 
     //Initiative location list
     self.locationList = ko.observableArray(app.data);
@@ -16,7 +9,7 @@ MapView = function () {
     //Create a map marker for each location
     self.locationList().map(function(location) {
         location.marker = new app.Marker(location)
-    })
+    });
 
     self.locationList.sort(self.sortByName);
 
@@ -35,7 +28,7 @@ MapView = function () {
             //Show all markers
             self.locationList().map(function(location) {
                 location.marker.setVisible(true)
-            })
+            });
 
             //Return filtered list
             return self.locationList();
@@ -69,7 +62,7 @@ MapView = function () {
     //Change value of currently selected location
     self.selectLocation = function (newLocation) {
         //Change selected location to new location
-        newLocation.marker.markerClicked()
+        newLocation.marker.markerClicked();
     };
 
     self.sortByName = function (a,b){

@@ -5,9 +5,9 @@
  * @constructor
  */
 app.Marker = function(location) {
-    'use strict'
+    'use strict';
 
-    var self = this
+    var self = this;
 
     var marker = new google.maps.Marker({
         position: {lat: location.lat, lng: location.long},
@@ -16,24 +16,24 @@ app.Marker = function(location) {
         visible: true,
     });
 
-    marker.location = location
-    marker.content = ""
-    marker.flickrImages = ko.observable("")
+    marker.location = location;
+    marker.content = "";
+    marker.flickrImages = ko.observable("");
 
     //Determines content of info window depending on API response
     marker.infoContent = ko.computed(function(){
-        var content = '<h3>' + marker.location.name + '</h3><p> ' + marker.location.description + '</p>'
+        var content = '<h3>' + marker.location.name + '</h3><p> ' + marker.location.description + '</p>';
         if(marker.flickrImages() === "") {
-            content += "<i>No response from flickr</i>"
-            return content
+            content += "<i>No response from flickr</i>";
+            return content;
         } else {
-            content += marker.flickrImages() + "<div class='col-xs-12 text-xs-center top-buffer'><i>Powered by flickr</i></div>"
-            return content
+            content += marker.flickrImages() + "<div class='col-xs-12 text-xs-center top-buffer'><i>Powered by flickr</i></div>";
+            return content;
         }
-    })
+    });
 
     marker.addListener('click', function() {
-        marker.markerClicked()
+        marker.markerClicked();
     });
 
 
@@ -43,7 +43,7 @@ app.Marker = function(location) {
     marker.markerClicked = function() {
         self.bounce();
         self.showInfoWindow(app.informationWindow);
-    }
+    };
 
     /**
      * showInfoWindow
@@ -65,8 +65,8 @@ app.Marker = function(location) {
 
                         //Create content string from callback result
                         self.apiResponse.forEach( function(value){
-                            var link = 'https://farm' + value.farm + '.staticflickr.com/' + value.server + '/' + value.id + '_' + value.secret
-                            marker.flickrImages(marker.flickrImages() + '<div class="col-xs-6"><a href="' + link + '.jpg" target="_blank"><img src="' + link +'_s.jpg" class="img-responsive"></a></div>')
+                            var link = 'https://farm' + value.farm + '.staticflickr.com/' + value.server + '/' + value.id + '_' + value.secret;
+                            marker.flickrImages(marker.flickrImages() + '<div class="col-xs-6"><a href="' + link + '.jpg" target="_blank"><img src="' + link +'_s.jpg" class="img-responsive"></a></div>');
                         });
 
                     }
@@ -75,25 +75,25 @@ app.Marker = function(location) {
 
               })
               .catch(function (error) {
-                  console.log(error)
+                  console.log(error);
                   marker.content = "<p>No response from flickr</p>";
                   self.populateInfoWindow(infowindow);
               });
 
        }
-    }
+    };
 
     self.populateInfoWindow = function(infowindow) {
         infowindow.setContent (marker.infoContent());
         infowindow.open(app.map, infowindow.marker);
-    }
+    };
 
     self.bounce = function() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         window.setTimeout(function(){
             marker.setAnimation(null);
         },1400);
-    }
+    };
 
     return marker;
 };
