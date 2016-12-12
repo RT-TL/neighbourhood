@@ -8,7 +8,7 @@ MapView = function () {
 
     //Create a map marker for each location
     self.locationList().map(function(location) {
-        location.marker = new app.Marker(location)
+        location.marker = new app.Marker(location);
     });
 
     self.locationList.sort(self.sortByName);
@@ -27,7 +27,7 @@ MapView = function () {
 
             //Show all markers
             self.locationList().map(function(location) {
-                location.marker.setVisible(true)
+                location.marker.setVisible(true);
             });
 
             //Return filtered list
@@ -47,11 +47,7 @@ MapView = function () {
                 var match = string.indexOf(searchString) === -1 ? false : true;
 
                 //Show/hide marker on map
-                if (match) {
-                    location.marker.setVisible(true);
-                } else {
-                    location.marker.setVisible(false);
-                }
+                location.marker.setVisible(match);
 
                 //Return true if search has found the string
                 return match;
@@ -73,7 +69,7 @@ MapView = function () {
       } else {
         return 0;
       }
-    }
+    };
 
 };
 

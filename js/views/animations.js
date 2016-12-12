@@ -7,7 +7,7 @@ var hider = document.getElementById("hider");
 
 //Toggle menu bar
 hider.addEventListener("click", function(){
-    var sidebar = document.getElementById("wrapper")
-    sidebar.classList.toggle('toggled')
-    hider.classList.toggle('inverted')
+    var sidebar = document.getElementById("wrapper");
+    sidebar.classList.toggle('toggled');
+    hider.classList.toggle('inverted');
 });

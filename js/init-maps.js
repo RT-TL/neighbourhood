@@ -18,8 +18,13 @@ initMap = function() {
         maxWidth: 200
     });
 
-    //Create view model
-    app.mapView = new MapView();
+    //Initiate app with location data
+    app.initialLocations();
+};
 
-    ko.applyBindings(app);
+/**
+ * react on map loading issue
+ */
+mapNotLoaded = function() {
+    document.getElementById('mapfield').innerHTML = "Sorry, Google Maps is not working today.";
 };

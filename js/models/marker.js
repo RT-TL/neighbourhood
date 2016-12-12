@@ -24,10 +24,10 @@ app.Marker = function(location) {
     marker.infoContent = ko.computed(function(){
         var content = '<h3>' + marker.location.name + '</h3><p> ' + marker.location.description + '</p>';
         if(marker.flickrImages() === "") {
-            content += "<i>No response from flickr</i>";
+            content += '<i>No response from flickr</i>';
             return content;
         } else {
-            content += marker.flickrImages() + "<div class='col-xs-12 text-xs-center top-buffer'><i>Powered by flickr</i></div>";
+            content += marker.flickrImages() + '<div class="col-xs-12 text-xs-center top-buffer"><i>Powered by flickr</i></div>';
             return content;
         }
     });
@@ -43,6 +43,7 @@ app.Marker = function(location) {
     marker.markerClicked = function() {
         self.bounce();
         self.showInfoWindow(app.informationWindow);
+        app.map.panTo(marker.getPosition());
     };
 
     /**
@@ -76,7 +77,7 @@ app.Marker = function(location) {
               })
               .catch(function (error) {
                   console.log(error);
-                  marker.content = "<p>No response from flickr</p>";
+                  marker.content = '<p>No response from flickr</p>';
                   self.populateInfoWindow(infowindow);
               });
 

@@ -7,25 +7,29 @@ app.initialLocations = function() {
     this.data = [];
     this.loadJSON = function (path)
     {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function()
-        {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    app.data = JSON.parse(xhr.responseText);
-                    return app.data;
-                } else {
-                    app.data = {};
-                    return app.data;
-                }
-            }
-        };
-        xhr.open("GET", path, true);
-        xhr.send();
+        fetch(path).then(function(response) {
+            return response.json();
+        }).then(function(j){
+            app.data = j;
+
+            //Create view model
+            app.mapView = new MapView();
+
+            //Activate view model
+            ko.applyBindings(app);
+
+            return app.data;
+        })
+        .catch(function(err) {
+            console.log(err);
+            app.data = {};
+            alert("Could not load initial data");
+            return app.data;
+        });
+
     };
 
-    this.loadJSON('locations.json')
+    this.loadJSON('locations.json');
 
 };
 
-app.initialLocations();
